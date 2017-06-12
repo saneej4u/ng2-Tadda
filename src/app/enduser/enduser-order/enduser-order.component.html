@@ -1,0 +1,47 @@
+<div style="padding-top:20px;">
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <md-card style="background:#215B7D">
+        <button md-raised-button (click) ="onOrderClick()" ><i class="material-icons">add_circle_outline</i> Add new order</button>
+      </md-card>
+    </div>
+  </div>
+
+  <div *ngIf="orders?.length > 0 ; else noorders">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5>{{enduser.FirstName }} {{ enduser.LastName }}' s orders</h5>
+        <div *ngFor="let item of orders">
+          <div style="padding-top:20px; padding-bottom:10px;" class="col s6 m6 l6">
+            <md-card>
+              <md-card-header>
+                <div md-card-avatar class="example-header-image"></div>
+                <md-card-title>Order No: {{item?.OrderID}}</md-card-title>
+                <md-card-subtitle> {{item?.Description}}</md-card-subtitle>
+              </md-card-header>
+              <md-card-content>
+                {{item?.Description}}
+              </md-card-content>
+              <md-card-actions class="left-align">
+                <button md-raised-button style="color:white; background: #215B7D !important;" (click)="onOrderDetails(item)" > Edit</button>
+                <button md-raised-button style="color:white; background: #215B7D !important;" (click)="onViewNotification(item)"> View Notification</button>
+                <button md-raised-button style="color:white; background: #215B7D !important;" (click)="onSendNotification(item)">Send Notification</button>
+              </md-card-actions>
+            </md-card>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noorders>
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h3 class="center-align"> No orders!</h3>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

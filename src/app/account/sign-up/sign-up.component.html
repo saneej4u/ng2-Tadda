@@ -1,0 +1,110 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+
+      <div class="row">
+        <div class="input-field col s12">
+          <h4>Create your account</h4>
+        </div>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="First name" ngModel [(ngModel)]="accountModel.firstName" required name="firstName" #firstName="ngModel"
+              style="width: 100%">
+
+            <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+              First Name is required
+            </div>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Last name" ngModel [(ngModel)]="accountModel.lastName" required name="lastName" #lastName="ngModel" style="width: 100%">
+
+            <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+              Last Name is required
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="email" placeholder="Email" ngModel [(ngModel)]="accountModel.email" required name="email" #email="ngModel" style="width: 100%">
+
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              Email is required
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="password" placeholder="Password" ngModel [(ngModel)]="accountModel.password" required name="password" #password="ngModel"
+              style="width: 100%">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+              Password is required
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="password" placeholder="Confirm Password" ngModel [(ngModel)]="accountModel.confirmPassword" required name="confirmPassword"
+              #confirmPassword="ngModel" style="width: 100%">
+
+            <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
+              Password is required
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Company Name" ngModel [(ngModel)]="accountModel.company" required name="company" #company="ngModel" style="width: 100%">
+            <div [hidden]="company.valid || company.pristine" class="alert alert-danger">
+              Company is required
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row hide">
+          <div class="input-field col s12">
+            <select id="subId" ngModel [(ngModel)]="accountModel.subId" required name="subId" #subId="ngModel">
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+
+            <div [hidden]="subId.valid || subId.pristine" class="alert alert-danger">
+              Subscription is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <button [disabled]="!f.valid" type="submit" style="width:100%" class="btn btn-lg btn-primary btn-block"> Create account </button>
+          </div>
+        </div>
+
+        <div class="center-align">
+          Already on Tadda ? <a (click)="onSignIn()" >Sign In</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>

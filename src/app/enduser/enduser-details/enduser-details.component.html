@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col s12 m12 l12">
+    <md-tab-group *ngIf="endUser; else noenduser">
+
+      <md-tab label="User Details">
+        <md-card class="example-card">
+          <md-card-header>
+            <md-card-title>
+              <h4> {{ endUser.FirstName }} {{ endUser.LastName }}</h4>
+            </md-card-title>
+          </md-card-header>
+          <md-card-content>
+
+            <div class="row">
+              <div class="col xs12 s12 m12 l12">
+                <div>
+                  <div class="col xs6 s6 m6 l6">
+                    <div style="background:#F5F2F0; padding:20px;">
+                      <fieldset>
+                        <legend>
+                          <h5>Details</h5>
+                        </legend>
+
+                        <ul class="">
+                          <li class="collection-item"> <b>Email:</b> {{ endUser.Email}}</li>
+                          <li class="collection-item"> <b>EndUserId: </b> {{ endUser.EndUserId}}</li>
+                          <li class="collection-item hide"><b>CompanyId: </b> {{ endUser.CompanyId }}</li>
+                          <li class="collection-item"><b>Date of birth:</b> {{ endUser.DateOfBirth }}</li>
+                          <li class="collection-item"><b>Android Id:</b> {{ endUser.AndroidDeviceId }}</li>
+                          <li class="collection-item"><b>IOS Id:</b> {{ endUser.IOSDeviceId }}</li>
+                        </ul>
+                      </fieldset>
+                    </div>
+
+                  </div>
+
+                  <div class="col xs6 s6 m6 l6">
+                    <div style="background:#F5F2F0;padding:20px;">
+                      <fieldset>
+                        <legend>
+                          <h5>Address</h5>
+                        </legend>
+                        <ul class="">
+                          <li class="collection-item">Address 1: {{ endUser.Email}}</li>
+                          <li class="collection-item">Address 2: {{ endUser.EndUserId}}</li>
+                          <li class="collection-item">Street:{{ endUser.CompanyId }}</li>
+                          <li class="collection-item">Poscode: {{ endUser?.ProfilePicUrl }}</li>
+                          <li class="collection-item">Country: {{ endUser.DateOfBirth }}</li>
+                        </ul>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" style="background: #215B7D !important;" (click)="onSendInvitation()" type="button"
+                  click name="action">Send Invitaion
+                <i class="material-icons right">send</i>
+            </button>
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+      </md-tab>
+
+      <md-tab label="Order Details">
+        <div style="min-height:400px;">
+          <tadda-enduser-order [enduser]='endUser' [orders]='endUser.Orders'></tadda-enduser-order>
+        </div>
+      </md-tab>
+
+      <md-tab label="Notifications">
+        <div *ngIf="endUser.Notifications?.length > 0 ; else noNotifications">
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <h5>{{endUser.FirstName }} {{ endUser.LastName }}' s Notifications</h5>
+            </div>
+          </div>
+
+          <div class="row" >
+            <div class="col s12 m12 l12">
+              <table class="striped">
+                <tr>
+                  <th>Name</th>
+                  <th> Message</th>
+                </tr>
+                <tr *ngFor="let item of endUser.Notifications">
+                  <td>{{ item?.Name }}</td>
+                  <td>{{ item?.Message}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noNotifications>
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <h5 class="center-align"> No notifications for {{ endUser.FirstName }}  {{ endUser.LastName }}</h5>
+            </div>
+          </div>
+        </ng-template>
+      </md-tab>
+    </md-tab-group>
+
+    <ng-template #noenduser>
+      <div class="center-align" style="padding-top:100px;">
+        <md-card>
+          <h5> <i class="material-icons">arrow_back</i> Please select user</h5>
+        </md-card>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

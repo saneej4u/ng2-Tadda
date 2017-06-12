@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col s12 m12 l12">
+    <div>
+
+      <!-- <md-nav-list >
+    <md-list-item >
+      <h4 md-line>
+        <button style="padding-right:10px;" md-mini-fab><md-icon>check</md-icon></button>  Add  new user
+      </h4>
+    </md-list-item>
+  </md-nav-list>
+
+-->
+
+    </div>
+
+    <div>
+      <input [(ngModel)]="filterQuery" placeholder="Search for user by name and email" id="enduser_search" type="text" class="validate"
+      />
+    </div>
+
+    <div *ngIf="endUsers?.length > 0 ; else noenduserlist">
+      <div *ngFor="let endUser of endUsers | enduserfilter:filterQuery">
+        <tadda-enduser-item (showDetailsEmit)="showDetailsListner($event)" [enduser]="endUser"></tadda-enduser-item>
+      </div>
+    </div>
+
+     <ng-template #noenduserlist>
+      <div class="center-align" style="padding-top:100px;">
+        <md-card>
+          <h6> Please add new user by clicking + sign at right bottom corner.</h6>
+        </md-card>
+      </div>
+    </ng-template>
+
+
+    <div class="fixed-action-btn horizontal" mdTooltip="ADD NEW USER" [mdTooltipPosition]="position">
+      <a class="btn-floating btn-large" (click)="onAddNewUser()" style="background-color:#215B7D">
+        <i class="large material-icons">add</i>
+      </a>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div style="min-width:600px; min-height:300px;">
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div style="background:#F5F2F0; padding:20px;">
+        <fieldset style="min-height:150px;">
+          <legend> Order Details</legend>
+          <div class="row">
+            <div class="col s2 m2 l2">
+              # {{selectedOrder?.OrderID}}
+            </div>
+
+            <div class="col s10 m10 l10">
+              {{selectedOrder?.Description}}
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <table class="striped">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th> Message</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of notifications">
+          <td>{{ item?.NotificationId}}</td>
+          <td>{{ item?.Name}}</td>
+          <td>{{ item?.Message}}</td>
+          <td>
+            <button md-raised-button>Re-send</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

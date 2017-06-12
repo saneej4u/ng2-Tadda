@@ -1,0 +1,13 @@
+<tadda-nav-bar></tadda-nav-bar>
+<div class="row"> 
+
+
+</div>
+<div class="row">
+  <div class="col s3 m3 l3">
+    <tadda-enduser-list (showDetailsListEmit)="showDetailsList($event)"></tadda-enduser-list>
+  </div>
+  <div class="col s9 m9 l9">
+    <tadda-enduser-details [endUser]="selecetedEnduser"></tadda-enduser-details>
+  </div>
+</div>

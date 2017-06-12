@@ -1,0 +1,46 @@
+<div style="width:600px;">
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h5> Send Notification </h5>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div style="background:#F5F2F0; padding:20px;">
+        <fieldset style="min-height:150px;">
+          <legend>
+            <b>Description</b>
+          </legend>
+          {{selectedOrder?.Description}}
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="icon_prefix" type="text" class="validate" ngModel name="Name" [(ngModel)]="notification.Name" #Name="ngModel">
+          <label for="icon_prefix">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="icon_prefix" type="text" class="validate" ngModel name="Message" [(ngModel)]="notification.Message" #Message="ngModel">
+          <label for="icon_prefix">Message</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button style="background:#215B7D" md-raised-button [color]="primary" style="width:100%" (click)="onNotificationCreate()">Send notification to order # {{ selectedOrder?.OrderID }}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

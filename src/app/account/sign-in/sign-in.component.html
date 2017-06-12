@@ -1,0 +1,40 @@
+
+<md-card class="example-card">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+
+    <div class="form-group">
+
+      <div class="row">
+        <div class="input-field col m12 s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="email" placeholder="Email" ngModel [(ngModel)]="accountModel.email" required name="email" #email="ngModel">
+
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            Email is required
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field col m12 s12">
+          <i class="material-icons prefix">lock</i>
+          <input type="password" placeholder="Password" ngModel [(ngModel)]="accountModel.password" required name="password" #password="ngModel">
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password is required
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="!f.valid" style="width:100%;" type="submit" class="waves-effect waves-light btn btn-lg btn-primary btn-block"> Sign In </button>
+    </div>
+
+    <div style="padding-top:20px;" class="center-align">
+      <a (click)="onSignUp()" href="#">Create an account</a>
+    </div>
+
+  </form>
+</md-card>
