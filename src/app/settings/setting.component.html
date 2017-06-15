@@ -1,20 +1,164 @@
 <tadda-nav-bar></tadda-nav-bar>
 <div class="container">
+    <div class="divider"></div>
+    <div class="section">
+        <h5>Company Details</h5>
+        <br>
+        <div class="row">
+            <div class="col s12 m12 l12">
 
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s10">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="Name" [(ngModel)]="company.Name" #Name="ngModel">
+                            <label for="icon_prefix">Enter company name</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <button style="background:#215B7D; color:white" (click)="onSaveCompany()"> <i  class="material-icons right">save</i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m3 s3 l3">
 
-    <div class="divider"></div>
-    <div class="section">
-        <h5>Company</h5>
-        <p>Stuff</p>
+                <div style="min-height:200px; text-align:center; padding-top:70px;" ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                    (fileOver)="fileOverBase($event)" [uploader]="uploader" class="well my-drop-zone">
+                    Drop brand logo
+                </div>
+
+            </div>
+            <div class="col m9 s9 l9">
+                <h5>Upload queue</h5>
+                <p>Queue length: {{ uploader?.queue?.length }}</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th>Size</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of uploader.queue">
+                            <td><strong>{{ item?.file?.name }}</strong></td>
+                            <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                            <td *ngIf="uploader.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                                <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                                <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div>
+                    Queue progress:
+                    <div class="progress" style="">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="divider"></div>
     <div class="section">
-        <h5>Address</h5>
-        <p>Stuff</p>
+
+        <div class="row">
+
+            <div class="col s6 m6 l6">
+                <h5>Address</h5>
+                <br>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="AddressLine1" [(ngModel)]="company.AddressLine1" #AddressLine1="ngModel">
+                            <label for="icon_prefix">Address Line 1</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="AddressLine2" [(ngModel)]="company.AddressLine2" #AddressLine2="ngModel">
+                            <label for="icon_prefix">Address Line 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="Street" [(ngModel)]="company.Street" #Street="ngModel">
+                            <label for="icon_prefix">Street</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="County" [(ngModel)]="company.County" #County="ngModel">
+                            <label for="icon_prefix">County</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="Country" [(ngModel)]="company.Country" #Country="ngModel">
+                            <label for="icon_prefix">Country</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="Postcode" [(ngModel)]="company.Postcode" #Postcode="ngModel">
+                            <label for="icon_prefix">Post Code</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button md-raised-button style="background:#215B7D !important; color:white !important; width:100%" class="btn btl-large large"
+                                (click)="onSaveaddress()">Save Address</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="push-s1 push-m1 push-l1 col s5 m5 l5">
+                <h5>Themes</h5>
+                <br>
+                <form>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="PrimaryColor" [(ngModel)]="company.PrimaryColor" #PrimaryColor="ngModel">
+                            <label for="icon_prefix">Primary Color</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="icon_prefix" type="text" class="validate" ngModel name="SecondaryColor" [(ngModel)]="company.SecondaryColor" #SecondaryColor="ngModel">
+                            <label for="icon_prefix">Secondary Color</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button md-raised-button style="background:#215B7D !important; color:white !important; width:100%" class="btn btl-large large"
+                                (click)="onSavetheme()">Save Theme</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="divider"></div>
-    <div class="section">
-        <h5>Theme</h5>
-        <p>Stuff</p>
-    </div>
+
 </div>

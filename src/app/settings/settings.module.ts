@@ -8,6 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SettingComponent } from '../settings/setting.component';
 import { HeaderModule } from '../header/header.module';
 
+import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload'
+
 
 
 const settingsRouting: Routes = [
@@ -23,7 +25,9 @@ const settingsRouting: Routes = [
     RouterModule.forChild(settingsRouting)
   ],
   declarations: [
-    SettingComponent
+    SettingComponent,
+    FileDropDirective,
+    FileSelectDirective
   ]
 })
 export class SettingsModule { }
