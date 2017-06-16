@@ -3,7 +3,7 @@ import { Router }      from '@angular/router';
 import { AccountService } from '../../account/account.service';
 import {MdDialog} from '@angular/material';
 import { SignInOutDialogComponent } from '../../sign-in-out-dialog/sign-in-out-dialog.component';
-
+import { SettingsService } from '../../settings/settings.service';
 
 @Component({
   selector: 'tadda-nav-bar',
@@ -13,12 +13,18 @@ import { SignInOutDialogComponent } from '../../sign-in-out-dialog/sign-in-out-d
 export class NavBarComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean;
+  brandLogo: string;
   subscription;
-  constructor(private accountService: AccountService, private dialog: MdDialog, private router: Router) {
+  constructor(private accountService: AccountService, private dialog: MdDialog, private router: Router, private settingsService: SettingsService) {
     console.log("NavBarComponent - Inside constructor - loggedIn.");
   }
 
   ngOnInit() {
+
+    this.settingsService.onLogoUploadCompleteEmit.subscribe((path) => {
+      this.brandLogo = "http://localhost/Tadda.WebApi/CompanyLogo/" + path;
+
+    })
 
     this.subscription = this.accountService.IsLoggedIn().subscribe((loggedIn) => {
 

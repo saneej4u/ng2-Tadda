@@ -25,14 +25,16 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input id="icon_prefix" type="text" class="validate" ngModel name="Name" [(ngModel)]="notification.Name" #Name="ngModel">
-          <label for="icon_prefix">Name</label>
+          <md-input-container>
+            <input mdInput placeholder="Name" ngModel name="Name" [(ngModel)]="notification.Name" #Name="ngModel">
+          </md-input-container>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="icon_prefix" type="text" class="validate" ngModel name="Message" [(ngModel)]="notification.Message" #Message="ngModel">
-          <label for="icon_prefix">Message</label>
+          <md-input-container>
+            <input mdInput placeholder="Message" ngModel name="Message" [(ngModel)]="notification.Message" #Message="ngModel">
+          </md-input-container>
         </div>
       </div>
       <div class="row">

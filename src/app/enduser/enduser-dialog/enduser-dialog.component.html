@@ -1,36 +1,37 @@
+<form #f="ngForm">
 
-<form  #f="ngForm">
+  <md-card class="example-card">
+    <md-card-header>
+      <md-card-title>
+        <h5>Add User</h5>
+        <br>
+      </md-card-title>
 
-<md-card class="example-card">
-  <md-card-header>
-    <md-card-title>
-      <h5>Add User</h5>
-    </md-card-title>
+    </md-card-header>
+    <md-card-content>
 
-  </md-card-header>
-  <md-card-content>
-
-    <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-
-            <input id="icon_prefix" type="text" class="validate" ngModel name="FirstName" [(ngModel)]="enduser.FirstName" #FirstName="ngModel">
-            <label for="icon_prefix">First Name</label>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <md-input-container>
+                <input mdInput placeholder="First Name" ngModel name="FirstName" [(ngModel)]="enduser.FirstName" #FirstName="ngModel">
+              </md-input-container>
+            </div>
+            <div class="input-field col s6">
+              <md-input-container>
+                <input mdInput placeholder="Last Name" ngModel name="LastName" [(ngModel)]="enduser.LastName" #LastName="ngModel">
+              </md-input-container>
+            </div>
           </div>
-          <div class="input-field col s6">
-            <input id="icon_telephone" type="tel" class="validate" ngModel name="LastName" [(ngModel)]="enduser.LastName" #LastName="ngModel">
-            <label for="icon_telephone">Last name</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <md-input-container>
+                <input mdInput placeholder="Email" ngModel name="EmailAddress" [(ngModel)]="enduser.EmailAddress" #EmailAddress="ngModel">
+              </md-input-container>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-
-            <input id="icon_prefix" type="text" class="validate" ngModel name="EmailAddress" [(ngModel)]="enduser.EmailAddress" #EmailAddress="ngModel">
-            <label for="icon_prefix">Email</label>
-          </div>
-        </div>
-        <!--  Address - Endusre
+          <!--  Address - Endusre
 
         <div class="row">
           <div class="input-field col s6">
@@ -63,14 +64,14 @@
           </div>
         </div>
         -->
-      </form>
-    </div>
-  </md-card-content>
-  <md-card-actions class="right-align">
-    <button md-raised-button [color]="primary" (click)="onEnduserClose()">Close</button>
-    <button md-raised-button [color]="primary" (click)="onAddEndUser()">Save</button>
-  </md-card-actions>
-</md-card>
+        </form>
+      </div>
+    </md-card-content>
+    <md-card-actions class="right-align">
+      <button md-raised-button [color]="primary" (click)="onEnduserClose()">Close</button>
+      <button md-raised-button [color]="primary" (click)="onAddEndUser()">Save</button>
+    </md-card-actions>
+  </md-card>
 
 
 </form>

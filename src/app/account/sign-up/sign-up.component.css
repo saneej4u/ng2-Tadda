@@ -4,3 +4,14 @@
 #ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+
+
+.md-input-container.md-input-focused label {
+  color: green !important;
+}
+
+.md-input-container::-webkit-input-placeholder {
+    color: mediumvioletred;
+    font-weight: bold;
+}

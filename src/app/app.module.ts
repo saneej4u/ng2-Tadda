@@ -16,6 +16,8 @@ import { AccountModule } from './account/account.module';
 import { SignInOutDialogComponent } from './sign-in-out-dialog/sign-in-out-dialog.component';
 import { HomeComponent } from './home/home.component';
 
+import { SettingsService } from './settings/settings.service';
+
 
 
 
@@ -60,7 +62,7 @@ const appRoutes: Routes = [
   exports:[
     SignInOutDialogComponent
   ],
-  providers: [],
+  providers: [ SettingsService ],
   bootstrap: [AppComponent],
   entryComponents: [
    SignInOutDialogComponent
