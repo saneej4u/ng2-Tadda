@@ -5,13 +5,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import { AccountModule } from '../account/account.module';
 //import { EnduserModule } from '../enduser/enduser.module';
+import { SharedService } from '../shared/shared.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
-      RouterModule,
-    MdButtonModule, 
+    RouterModule,
+    MdButtonModule,
     MdCheckboxModule,
     AccountModule
   ],
@@ -20,6 +21,7 @@ import { AccountModule } from '../account/account.module';
   ],
   declarations: [
     NavBarComponent
-    ]
+  ],
+  providers: [SharedService]
 })
 export class HeaderModule { }

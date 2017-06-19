@@ -34,7 +34,7 @@ export class SettingsService {
 
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.baseUrl + 'api/tadda/company/update', JSON.stringify(company), options)
+    return this.http.put(this.baseUrl + 'api/tadda/company/update', JSON.stringify(company), options)
       .map((res: Response) => {
         let body = res.json();
 

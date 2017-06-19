@@ -7,7 +7,7 @@ import { SettingsService } from './settings.service';
 import { SharedService } from '../shared/shared.service';
 
 
-const URL = 'http://localhost/Tadda.WebApi/api/tadda/company/documentUpload/mediaUpload';
+const URL = 'http://localhost/Tadda.WebApi/api/tadda/company/uploadazure';
 
 @Component({
   selector: 'app-setting',
@@ -37,7 +37,14 @@ export class SettingComponent implements OnInit {
     });
 
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      this.settingsService.OnUploadComplete(item.file.name);
+      this.company.BrandLogoUrl = JSON.parse(response);
+      this.settingsService.SaveCompany(this.company).subscribe(() => {
+        this.settingsService.OnUploadComplete(this.company.BrandLogoUrl);
+      },
+        () => {
+
+        });
+
     };
 
 
@@ -50,13 +57,12 @@ export class SettingComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
-  onSaveCompany(cform: NgForm) {
-
-    this.company.Name = cform.value.Name;
-
+  onSaveCompany() {
     this.settingsService.SaveCompany(this.company).subscribe((result) => {
 
       this.company = result;
+      console.log("Company Updated..." + JSON.stringify(this.company));
+
     }, () => {
 
     });

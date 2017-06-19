@@ -4,6 +4,8 @@ import { AccountService } from '../../account/account.service';
 import {MdDialog} from '@angular/material';
 import { SignInOutDialogComponent } from '../../sign-in-out-dialog/sign-in-out-dialog.component';
 import { SettingsService } from '../../settings/settings.service';
+import { SharedService } from '../../shared/shared.service';
+import { Company }  from '../../settings/company.model';
 
 @Component({
   selector: 'tadda-nav-bar',
@@ -13,23 +15,30 @@ import { SettingsService } from '../../settings/settings.service';
 export class NavBarComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean;
-  brandLogo: string;
   subscription;
-  constructor(private accountService: AccountService, private dialog: MdDialog, private router: Router, private settingsService: SettingsService) {
+  company = new Company();
+
+  constructor(private accountService: AccountService, private dialog: MdDialog, private router: Router, private settingsService: SettingsService, private sharedService: SharedService) {
     console.log("NavBarComponent - Inside constructor - loggedIn.");
   }
 
   ngOnInit() {
 
-    this.settingsService.onLogoUploadCompleteEmit.subscribe((path) => {
-      this.brandLogo = "http://localhost/Tadda.WebApi/CompanyLogo/" + path;
+    let authToken = localStorage.getItem('currentuser');
 
+    if (authToken != null) {
+      this.sharedService.GetLoggedInCompany().subscribe((company) => {
+        this.company = company;
+      }, () => {
+
+      });
+    }
+
+    this.settingsService.onLogoUploadCompleteEmit.subscribe((path) => {
+      this.company.BrandLogoUrl = path;
     })
 
     this.subscription = this.accountService.IsLoggedIn().subscribe((loggedIn) => {
-
-      console.log("NavBarComponent - Inside ngOnInit sub - loggedIn.." + loggedIn);
-
       this.isLoggedIn = loggedIn;
     })
 

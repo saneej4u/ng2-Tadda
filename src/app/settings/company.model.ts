@@ -11,7 +11,8 @@ export class Company {
         public Country?: string,
         public Postcode?: string,
         public PrimaryColor?: string,
-        public SecondaryColor?: string
+        public SecondaryColor?: string,
+        public BrandLogoUrl?:string
     ) { }
 
 }

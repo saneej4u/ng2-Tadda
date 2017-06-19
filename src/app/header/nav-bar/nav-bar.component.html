@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="home" class="brand-logo" style="padding-left:40px;"><img [src]="brandLogo" alt=""></a>
+    <a href="home" class="brand-logo" style="padding-left:40px;"><img [src]="'https://companylogotadda.blob.core.windows.net/images/' + company.BrandLogoUrl" alt=""></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <ng-template #signUp>
         <li><a routerLink="/enduser">Users</a></li>
