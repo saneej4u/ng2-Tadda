@@ -18,7 +18,8 @@ export class AccountService {
 
 
   constructor(private http: Http) {
-    this.baseUrl = "http://localhost/Tadda.WebApi/";
+    //this.baseUrl = "http://localhost/Tadda.WebApi/";
+     this.baseUrl = "http://taddatech.azurewebsites.net/";
   }
 
 
