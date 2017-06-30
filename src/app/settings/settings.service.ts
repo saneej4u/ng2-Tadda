@@ -14,8 +14,8 @@ export class SettingsService {
   baseUrl: string = '';
 
   constructor(private http: Http, private router: Router) {
-   // this.baseUrl = "http://localhost/Tadda.WebApi/";
-     this.baseUrl = "http://taddatech.azurewebsites.net/";
+      this.baseUrl = "http://localhost/Tadda.WebApi/";
+      //this.baseUrl = "http://taddatech.azurewebsites.net/";
   }
 
 

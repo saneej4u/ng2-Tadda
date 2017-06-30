@@ -21,8 +21,8 @@ export class EnduserService {
   orderCreatedEmit: EventEmitter<Order> = new EventEmitter<Order>();
 
   constructor(private http: Http, private router: Router, private accountService: AccountService) {
-   // this.baseUrl = "http://localhost/Tadda.WebApi/";
-    this.baseUrl = "http://taddatech.azurewebsites.net/";
+    this.baseUrl = "http://localhost/Tadda.WebApi/";
+    //this.baseUrl = "http://taddatech.azurewebsites.net/";
 
   }
 
